@@ -1,0 +1,43 @@
+
+----------
+[SERVIDOR - 06/12/2023 14:35:37] Conexao fechada com o ('127.0.0.1', 56194)
+----------
+[SERVIDOR - 06/12/2023 14:35:39] Conexao estabelecida com ('127.0.0.1', 56198)
+----------
+[CLIENTE - 06/12/2023 14:35:44] Enviando requisicao:
+ notfound
+----------
+[SERVIDOR - 06/12/2023 14:35:44] Requisicao recebida de: ('127.0.0.1', 56198)
+ notfound
+----------
+[SERVIDOR - 06/12/2023 14:35:44] Resposta enviada para: ('127.0.0.1', 56198)
+ HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 14:35:44] A resposta recebida foi:
+ HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 14:36:10] Enviando requisicao:
+ GET /style.css HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 14:36:10] Requisicao recebida de: ('127.0.0.1', 56198)
+ GET /style.css HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 14:36:10] Resposta enviada para: ('127.0.0.1', 56198)
+ HTTP/1.1 200 OK
+ Content-Type: text/css
+
+#nome {
+    color: blue;
+}
+----------
+[CLIENTE - 06/12/2023 14:36:10] A resposta recebida foi:
+ HTTP/1.1 200 OK
+ Content-Type: text/css
+
+#nome {
+    color: blue;
+}

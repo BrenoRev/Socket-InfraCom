@@ -1,24 +1,47 @@
-from socket import socket, AF_INET, SOCK_STREAM;
-from threading import Thread
+from socket import socket, AF_INET, SOCK_STREAM
+from datetime import datetime
 
-def processa_requisicao(socket_cliente):
-    for _ in range(2):
-        requisicao = socket_cliente.recv(2048)
-        mensagem = requisicao.decode()
-        print(f'A requisição do cliente foi {mensagem}')
-        resposta = "Ola, cliente"
-        socket_cliente.send(resposta.encode())
+with open('./files/index.html', 'r') as f:
+    index_html = f.read()
+with open('./files/style.css', 'r') as f:
+    style_css = f.read()
+
+def print_and_save_in_file(text: str):
+    data = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    textoServidor = f'[SERVIDOR - {data}] {text}'
+    print(textoServidor)
+    with open("log.txt", "a") as file:
+        file.write('\n----------\n')
+        file.write(textoServidor) 
 
 socket_servidor = socket(AF_INET, SOCK_STREAM)
 
-socket_servidor.bind(('127.0.0.1', 12345))
+socket_servidor.bind(('127.0.0.1', 10311))
 
+print_and_save_in_file("Servidor iniciado, aguardando conexoes...")
 socket_servidor.listen()
+print_and_save_in_file("Servidor iniciado")
 
-for i in range(2):
+while True:
+    sc, addr = socket_servidor.accept()
+    print_and_save_in_file(f"Conexao estabelecida com {addr}")
 
-    socket_cliente, endereco_cliente = socket_servidor.accept()
+    while True:
+        request = sc.recv(1024).decode()
+        if not request:
+            break
+        
+        print_and_save_in_file(f"Requisicao recebida de: {addr}\n {request}")
 
-    print(f'O cliente {endereco_cliente} estabeleceu uma conexão...')
+        if request.startswith('GET / HTTP/1.1'):
+            reply = 'HTTP/1.1 200 OK\n\n' + index_html
+        elif request.startswith('GET /style.css HTTP/1.1'):
+            reply = 'HTTP/1.1 200 OK\n Content-Type: text/css\n\n' + style_css
+        else:
+            reply = 'HTTP/1.1 404 Not Found\n\nPage not found.'
 
-    Thread(target=processa_requisicao, args=(socket_cliente,)).start()
+        print_and_save_in_file(f"Resposta enviada para: {addr}\n {reply}")
+        sc.send(reply.encode())
+
+    sc.close()
+    print_and_save_in_file(f"Conexao fechada com o {addr}")
