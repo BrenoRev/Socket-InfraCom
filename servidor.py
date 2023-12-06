@@ -1,4 +1,4 @@
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_DGRAM
 from datetime import datetime
 
 with open('./files/index.html', 'r') as f:
@@ -14,34 +14,32 @@ def print_and_save_in_file(text: str):
         file.write('\n----------\n')
         file.write(textoServidor) 
 
-socket_servidor = socket(AF_INET, SOCK_STREAM)
+socket_servidor = socket(AF_INET, SOCK_DGRAM)
 
 socket_servidor.bind(('127.0.0.1', 10311))
 
 print_and_save_in_file("Servidor iniciado, aguardando conexoes...")
-socket_servidor.listen()
-print_and_save_in_file("Servidor iniciado")
 
 while True:
-    sc, addr = socket_servidor.accept()
+    data, addr = socket_servidor.recvfrom(2048)
     print_and_save_in_file(f"Conexao estabelecida com {addr}")
 
-    while True:
-        request = sc.recv(1024).decode()
-        if not request:
-            break
-        
-        print_and_save_in_file(f"Requisicao recebida de: {addr}\n {request}")
+    request = data.decode()
+    if not request:
+        print_and_save_in_file(f"Nenhuma requisição foi enviada, conexao fechada com {addr}")
+        break
+    
+    print_and_save_in_file(f"Requisicao recebida de: {addr}\n {request}")
 
-        if request.startswith('GET / HTTP/1.1'):
-            reply = 'HTTP/1.1 200 OK\n\n' + index_html
-        elif request.startswith('GET /style.css HTTP/1.1'):
-            reply = 'HTTP/1.1 200 OK\n Content-Type: text/css\n\n' + style_css
-        else:
-            reply = 'HTTP/1.1 404 Not Found\n\nPage not found.'
+    if request.startswith('GET / HTTP/1.1'):
+        reply = 'HTTP/1.1 200 OK\n\n' + index_html
+    elif request.startswith('GET /style.css HTTP/1.1'):
+        reply = 'HTTP/1.1 200 OK\n Content-Type: text/css\n\n' + style_css
+    else:
+        reply = 'HTTP/1.1 404 Not Found\n\nPage not found.'
 
-        print_and_save_in_file(f"Resposta enviada para: {addr}\n {reply}")
-        sc.send(reply.encode())
+    print_and_save_in_file(f"Resposta enviada para: {addr}\n {reply}")
+    socket_servidor.sendto(reply.encode(), addr)
 
-    sc.close()
-    print_and_save_in_file(f"Conexao fechada com o {addr}")
+print_and_save_in_file(f"Conexao fechada com o {addr}")
+socket_servidor.close()

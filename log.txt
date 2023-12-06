@@ -1,32 +1,128 @@
 
 ----------
-[SERVIDOR - 06/12/2023 14:35:37] Conexao fechada com o ('127.0.0.1', 56194)
+[SERVIDOR - 06/12/2023 18:48:34] Servidor iniciado, aguardando conexoes...
 ----------
-[SERVIDOR - 06/12/2023 14:35:39] Conexao estabelecida com ('127.0.0.1', 56198)
+[CLIENTE - 06/12/2023 18:49:22] Enviando requisicao:
+Testando 1
 ----------
-[CLIENTE - 06/12/2023 14:35:44] Enviando requisicao:
- notfound
+[SERVIDOR - 06/12/2023 18:49:22] Conexao estabelecida com ('127.0.0.1', 50621)
 ----------
-[SERVIDOR - 06/12/2023 14:35:44] Requisicao recebida de: ('127.0.0.1', 56198)
- notfound
+[SERVIDOR - 06/12/2023 18:49:22] Requisicao recebida de: ('127.0.0.1', 50621)
+ Testando 1
 ----------
-[SERVIDOR - 06/12/2023 14:35:44] Resposta enviada para: ('127.0.0.1', 56198)
+[SERVIDOR - 06/12/2023 18:49:22] Resposta enviada para: ('127.0.0.1', 50621)
  HTTP/1.1 404 Not Found
 
 Page not found.
 ----------
-[CLIENTE - 06/12/2023 14:35:44] A resposta recebida foi:
+[CLIENTE - 06/12/2023 18:49:22] A resposta recebida foi:
+HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 18:49:33] Enviando requisicao:
+Testando 2
+----------
+[SERVIDOR - 06/12/2023 18:49:33] Conexao estabelecida com ('127.0.0.1', 65127)
+----------
+[SERVIDOR - 06/12/2023 18:49:33] Requisicao recebida de: ('127.0.0.1', 65127)
+ Testando 2
+----------
+[SERVIDOR - 06/12/2023 18:49:33] Resposta enviada para: ('127.0.0.1', 65127)
  HTTP/1.1 404 Not Found
 
 Page not found.
 ----------
-[CLIENTE - 06/12/2023 14:36:10] Enviando requisicao:
+[CLIENTE - 06/12/2023 18:49:33] A resposta recebida foi:
+HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 18:49:44] Enviando requisicao:
+GET / HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:44] Conexao estabelecida com ('127.0.0.1', 50621)
+----------
+[SERVIDOR - 06/12/2023 18:49:44] Requisicao recebida de: ('127.0.0.1', 50621)
+ GET / HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:44] Resposta enviada para: ('127.0.0.1', 50621)
+ HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="nome">Breno</h1>
+</body>
+</html>
+----------
+[CLIENTE - 06/12/2023 18:49:44] A resposta recebida foi:
+HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="nome">Breno</h1>
+</body>
+</html>
+----------
+[CLIENTE - 06/12/2023 18:49:46] Enviando requisicao:
+GET / HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:46] Conexao estabelecida com ('127.0.0.1', 65127)
+----------
+[SERVIDOR - 06/12/2023 18:49:46] Requisicao recebida de: ('127.0.0.1', 65127)
+ GET / HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:46] Resposta enviada para: ('127.0.0.1', 65127)
+ HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="nome">Breno</h1>
+</body>
+</html>
+----------
+[CLIENTE - 06/12/2023 18:49:46] A resposta recebida foi:
+HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="nome">Breno</h1>
+</body>
+</html>
+----------
+[CLIENTE - 06/12/2023 18:49:51] Enviando requisicao:
+GET /style.css HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:51] Conexao estabelecida com ('127.0.0.1', 50621)
+----------
+[SERVIDOR - 06/12/2023 18:49:51] Requisicao recebida de: ('127.0.0.1', 50621)
  GET /style.css HTTP/1.1
 ----------
-[SERVIDOR - 06/12/2023 14:36:10] Requisicao recebida de: ('127.0.0.1', 56198)
- GET /style.css HTTP/1.1
-----------
-[SERVIDOR - 06/12/2023 14:36:10] Resposta enviada para: ('127.0.0.1', 56198)
+[SERVIDOR - 06/12/2023 18:49:51] Resposta enviada para: ('127.0.0.1', 50621)
  HTTP/1.1 200 OK
  Content-Type: text/css
 
@@ -34,10 +130,70 @@ Page not found.
     color: blue;
 }
 ----------
-[CLIENTE - 06/12/2023 14:36:10] A resposta recebida foi:
+[CLIENTE - 06/12/2023 18:49:51] A resposta recebida foi:
+HTTP/1.1 200 OK
+ Content-Type: text/css
+
+#nome {
+    color: blue;
+}
+----------
+[CLIENTE - 06/12/2023 18:49:52] Enviando requisicao:
+GET /style.css HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:52] Conexao estabelecida com ('127.0.0.1', 65127)
+----------
+[SERVIDOR - 06/12/2023 18:49:52] Requisicao recebida de: ('127.0.0.1', 65127)
+ GET /style.css HTTP/1.1
+----------
+[SERVIDOR - 06/12/2023 18:49:52] Resposta enviada para: ('127.0.0.1', 65127)
  HTTP/1.1 200 OK
  Content-Type: text/css
 
 #nome {
     color: blue;
 }
+----------
+[CLIENTE - 06/12/2023 18:49:52] A resposta recebida foi:
+HTTP/1.1 200 OK
+ Content-Type: text/css
+
+#nome {
+    color: blue;
+}
+----------
+[CLIENTE - 06/12/2023 18:49:56] Enviando requisicao:
+notfound
+----------
+[SERVIDOR - 06/12/2023 18:49:56] Conexao estabelecida com ('127.0.0.1', 65127)
+----------
+[SERVIDOR - 06/12/2023 18:49:56] Requisicao recebida de: ('127.0.0.1', 65127)
+ notfound
+----------
+[SERVIDOR - 06/12/2023 18:49:56] Resposta enviada para: ('127.0.0.1', 65127)
+ HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 18:49:56] A resposta recebida foi:
+HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 18:49:59] Enviando requisicao:
+notfound
+----------
+[SERVIDOR - 06/12/2023 18:49:59] Conexao estabelecida com ('127.0.0.1', 50621)
+----------
+[SERVIDOR - 06/12/2023 18:49:59] Requisicao recebida de: ('127.0.0.1', 50621)
+ notfound
+----------
+[SERVIDOR - 06/12/2023 18:49:59] Resposta enviada para: ('127.0.0.1', 50621)
+ HTTP/1.1 404 Not Found
+
+Page not found.
+----------
+[CLIENTE - 06/12/2023 18:49:59] A resposta recebida foi:
+HTTP/1.1 404 Not Found
+
+Page not found.
